@@ -1,10 +1,15 @@
 "use strict";
 
 var express = require('express'),
+    session = require('express-session'),
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
     path = require("path"),
     mongoose = require('mongoose'),
     commentController = require('./controllers/comment_controller'),
     userController = require('./controllers/user_controller'),
+    publicationController = require('./controllers/publication_controller'),
+    accountController = require('./controllers/account_controller'),
     secrets = require('./config/secrets'),
     app, router;
 
@@ -15,10 +20,14 @@ mongoose.connection.on('error', function() {
 
 app = express();
 app.use(express.static(__dirname ));
+app.use(bodyParser.json());
+app.use(session({ secret: 'my secret', resave: false, saveUninitialized: true}));
 
 app.controllers = {
     comments : commentController,
-    users : userController
+    users : userController,
+    publications : publicationController,
+    account : accountController
 };
 
 function ApiRequest(req, res, next)
@@ -33,7 +42,7 @@ function ApiRequest(req, res, next)
     }
     else
     {
-        action = controller[req.params.action] || controller[req.method.toLowerCase()];
+        action = controller[req.method.toLowerCase()];
 
         if (action === undefined)
         {
@@ -63,14 +72,14 @@ function ApiRequest(req, res, next)
 
 function StaticFileRequest(req, res, next)
 {
-    if(req.url.indexOf("backend") === -1) {
+    if(req.url.indexOf("api") === -1) {
         var url = path.join(__dirname, "../frontend/", req._parsedUrl.pathname);
         if (req.url === "/" || req.url === "/frontend/") {
             url = path.join(__dirname, "../frontend/index.html");
-            res.sendfile(url);
+            res.sendFile(url);
         }
         else {
-            res.sendfile(url);
+            res.sendFile(url);
         }
     }
     else{
@@ -82,8 +91,10 @@ function StaticFileRequest(req, res, next)
 app.use(StaticFileRequest);
 
 // web api services
-app.get('/backend/:controller/:action', ApiRequest);
-app.get('/backend/:controller', ApiRequest);
+app.get('/api/:controller', ApiRequest);
+app.post('/api/:controller', ApiRequest);
+app.put('/api/:controller', ApiRequest);
+app.delete('/api/:controller', ApiRequest);
 
 app.listen(8080);
 console.log('App listening at :8080');

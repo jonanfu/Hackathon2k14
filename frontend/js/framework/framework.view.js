@@ -1,21 +1,11 @@
 define(['handlebars'],function(handlebars){
     "use strict";
 
-    var View = function(config){
+    var View = function(config) {
         this.container = config.container;
         this.templateUrl = config.templateUrl;
-        this.compiledTemplate = null;
         this.model = config.model;
-        this.isReady = false;
-    };
-
-    View.prototype.initialize = function(){
-        var that = this;
-        that.loadTemplate(function(template){
-            that.compiledTemplate =  that.compileHbsTemplate(template);
-            that.loadModel();
-            that.isReady = true;
-        });
+        this.parseArgs = config.parseArgs
     };
 
     View.prototype.loadTemplate = function(cb){
@@ -28,34 +18,39 @@ define(['handlebars'],function(handlebars){
                 cb(template);
             },
             error: function(a,b,c) {
-                console.log(a,b,c);
+                console.log("AJAX ERROR: ",a,b,c);
             }
         });
     };
 
-    View.prototype.loadModel = function() {
+    View.prototype.render = function(args, cb){
         var that = this;
-        if (that.model !== null) {
-            that.model.get();
-        }
-    };
+        args = that.parseArgs(args);
 
-    View.prototype.compileHbsTemplate = function(template) {
-        return handlebars.compile(template);
-    };
-
-    View.prototype.render = function(cb){
-        var html, hbsModel;
-        if(this.isReady === false){
-            throw new Error('Call View.initialize() first');
-        }
-        hbsModel = this.model || {};
-        html = this.compiledTemplate(hbsModel);
-        $(this.container).html(html);
-        if(typeof cb === "function")
-        {
-            cb();
-        }
+        that.loadTemplate(function(template){
+            var html, compiledTemplate;
+            compiledTemplate =  handlebars.compile(template);
+            if(that.model != null && args != null)
+            {
+                that.model.get(args, function(data){
+                    html = compiledTemplate(data);
+                    $(that.container).html(html);
+                    if(typeof cb === "function")
+                    {
+                        cb();
+                    }
+                });
+            }
+            else
+            {
+                html = compiledTemplate({});
+                $(that.container).html(html);
+                if(typeof cb === "function")
+                {
+                    cb();
+                }
+            }
+        });
     };
 
     return View;

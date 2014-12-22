@@ -1,0 +1,28 @@
+<h4>Escribir comentario</h4>
+<textarea class="form-control" rows="3" id="comentario"></textarea>
+<br/>
+<button class="btn btn-primary" id="guardar-comentario">
+    <i class="fa fa-paper-plane-o"></i> Enviar comentario
+</button>
+<hr/>
+<h4>Comentarios</h4>
+<hr/>
+{{#each comment}}
+    <div class="media">
+        {{#if ../isAdmin}}
+            <div class="btn-toolbar">
+                <a href="#home/deletecomment/{{publicationId}}/{{_id}}" class="pull-right">
+                    <i class="fa fa-remove"></i>
+                </a>
+            </div>
+        {{/if}}
+        <a class="media-left" href="#">
+            <img src="http://files.gamebanana.com/img/ico/sprays/pedo_bear_magic.png" style="width: 64px; height: 64px;">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">{{title}}</h4>
+            <b>{{ticks}}</b>
+            <p>{{content}}</p>
+        </div>
+    </div>
+{{/each}}

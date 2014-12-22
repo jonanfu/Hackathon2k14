@@ -1,7 +1,7 @@
 "use strict";
 
 var mongoose = require('mongoose'),
-    collectionName = 'users',
+    collectionName = 'publications',
     schema,
     model;
 
@@ -9,9 +9,10 @@ if (mongoose.modelNames().indexOf(collectionName) == -1)
 {
     schema = new mongoose.Schema(
         {
-            email : { type: String, required: true },
-            password : { type: String, required: true },
-            isAdmin : { type: Boolean, required: true }
+            userId : { type: mongoose.Schema.ObjectId, required: true },
+            title : { type: String, required: true },
+            content : { type: String, required: true },
+            ticks : { type : Number, required : true }
         },
         {
             collection : collectionName

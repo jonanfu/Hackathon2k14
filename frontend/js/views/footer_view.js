@@ -4,10 +4,11 @@ define([ 'js/framework/framework.view' ], function (View) {
     var footerView = new View({
         container : "#footer",
         templateUrl : "js/templates/footer.hbs",
-        model : null
+        model : null,
+        parseArgs : function(){
+            return {};
+        }
     });
-
-    footerView.initialize();
 
     return footerView;
 });

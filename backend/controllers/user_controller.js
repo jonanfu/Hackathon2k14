@@ -31,17 +31,64 @@ UserController.prototype.get = function (req, res)
 
 UserController.prototype.post = function (req, res)
 {
-    res.send(500, { data : 'TODO' });
+    var user;
+
+    user = new userModel({
+        email : req.body.email,
+        password : req.body.password,
+        isAdmin : false
+    });
+
+    user.save(function(error) {
+        if(error === null)
+        {
+            res.send(200, { user : [] });
+        }
+        else
+        {
+            console.log(error);
+            res.send(500, 'Internal Server Error');
+        }
+    });
 };
 
 UserController.prototype.put = function (req, res)
 {
-    res.send(500, { data : 'TODO' });
+    var userData;
+
+    userData = {
+        email : req.body.email,
+        password : req.body.password,
+        isAdmin : false
+    };
+
+    userModel.findByIdAndUpdate(req.body.id, userData, function(error) {
+        if(error === null)
+        {
+            res.send(200, { user : [] });
+        }
+        else
+        {
+            console.log(error);
+            res.send(500, 'Internal Server Error');
+        }
+    });
 };
 
 UserController.prototype.delete = function (req, res)
 {
-    res.send(500, { data : 'TODO' });
+    var filter = { _id : req.body.id };
+    userModel.findOneAndRemove(filter, function(error) {
+        if(error === null)
+        {
+            res.send(200, { user : [] });
+        }
+        else
+        {
+            console.log(error);
+            res.send(500, 'Internal Server Error');
+        }
+    });
 };
 
 module.exports = new UserController();

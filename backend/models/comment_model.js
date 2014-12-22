@@ -9,12 +9,9 @@ if (mongoose.modelNames().indexOf(collectionName) == -1)
 {
     schema = new mongoose.Schema(
         {
-            talkId: { type: mongoose.Schema.ObjectId, required: true },
-            content: { type: String, required: true },
-            userId : [ { type: mongoose.Schema.ObjectId, required: true } ],
-            isTroll : { type: Boolean, required: true },
-            downVoted : { type: Number, required: true },
-            upVoted : { type: Number, required: true },
+            publicationId: { type: mongoose.Schema.ObjectId, required: true },
+            userId : { type: mongoose.Schema.ObjectId, required: true },
+            content : { type : String, required : true },
             ticks : { type : Number, required : true }
         },
         {

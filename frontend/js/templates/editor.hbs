@@ -1,0 +1,14 @@
+<h1>Editor de noticias</h1>
+<div role="form">
+    <div class="form-group">
+        <label>Titulo</label>
+        <input type="text" class="form-control" id="titulo" placeholder="Titulo" value="{{title}}">
+    </div>
+    <div class="form-group">
+        <label>Contenido</label>
+        <textarea class="form-control" rows="10" id="contenido">{{{content}}}</textarea>
+    </div>
+    <button class="btn btn-primary" id="editor-submit-btn" data-id="{{_id}}">
+        <i class="fa fa-paper-plane-o"> Guardar Noticia</i>
+    </button>
+</div>

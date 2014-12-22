@@ -1,9 +1,35 @@
 .footer_text{
     text-align: center;
-    color: #fff;
     padding-top: 1%;
+    color: #777;
 }
 
-.navbar-inverse .navbar-brand{
-    color: #fff;
+body{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.publication-icon{
+    font-size: 50px;
+}
+
+.login-box{
+    background-color: #4e5d6c;
+    width: 35%;
+    margin: auto;
+    padding: 20px;
+}
+
+#login_error{
+    text-align: center;
+}
+
+#login_error img{
+    width: 50%;
+    margin: auto;
+}
+
+.btn-toolbar a{
+    margin-right: 5px;
+    margin-bottom: 5px;
 }

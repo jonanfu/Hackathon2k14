@@ -1,0 +1,29 @@
+{{#if isAdmin}}
+    <a href="#home/publicationeditor" class="btn btn-primary pull-right">
+        <i class="fa fa-plus"></i> Crear Noticia
+    </a>
+{{/if}}
+<h1>Noticias</h1>
+{{#each publication}}
+    <div class="media">
+        {{#if ../isAdmin}}
+            <div class="btn-toolbar">
+            <a href="#home/publicationeditor/{{_id}}" class="pull-right">
+                <i class="fa fa-pencil"></i>
+            </a>
+            <a href="#home/deleteeditor/{{_id}}" class="pull-right">
+                <i class="fa fa-remove"></i>
+            </a>
+            </div>
+        {{/if}}
+        <a class="media-left" href="#home/publication/{{_id}}">
+            <i class="fa fa-book publication-icon"></i>
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">{{title}}</h4>
+            <p>{{ticks}}</p>
+            <p></p>
+        </div>
+    </div>
+    <hr />
+{{/each}}
