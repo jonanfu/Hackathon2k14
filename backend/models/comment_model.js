@@ -9,7 +9,7 @@ if (mongoose.modelNames().indexOf(collectionName) == -1)
 {
     schema = new mongoose.Schema(
         {
-            publicationId: { type: mongoose.Schema.ObjectId, required: true },
+            filmId: { type: mongoose.Schema.ObjectId, required: true },
             userId : { type: mongoose.Schema.ObjectId, required: true },
             content : { type : String, required : true },
             ticks : { type : Number, required : true }

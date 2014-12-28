@@ -1,8 +1,12 @@
 {
-  "name": "testDemo",
+  "name": "FilmsAffinity",
   "version": "0.0.0",
   "authors": [
-    "Remo Jansen <rhjm.gnu@gmail.com>"
+    "Alejandro Lora <alejandrofpo@gmail.com>",
+    "Santiago Vicente <santi@gmail.com>",
+    "Jose A. Navarro <jose@gmail.com>",
+    "Yafar Campos <ayafar@gmail.com>",
+    "Alejandro Quevedo <queve2@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [

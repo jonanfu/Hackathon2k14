@@ -1,7 +1,7 @@
 "use strict";
 
 var mongoose = require('mongoose'),
-    collectionName = 'publications',
+    collectionName = 'films',
     schema,
     model;
 
@@ -12,7 +12,8 @@ if (mongoose.modelNames().indexOf(collectionName) == -1)
             userId : { type: mongoose.Schema.ObjectId, required: true },
             title : { type: String, required: true },
             content : { type: String, required: true },
-            ticks : { type : Number, required : true }
+            date : { type : Number, required : true },
+            manager : { type : String, required : true }
         },
         {
             collection : collectionName

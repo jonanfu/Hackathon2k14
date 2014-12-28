@@ -8,7 +8,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     commentController = require('./controllers/comment_controller'),
     userController = require('./controllers/user_controller'),
-    publicationController = require('./controllers/publication_controller'),
+    filmController = require('./controllers/film_controller'),
     accountController = require('./controllers/account_controller'),
     secrets = require('./config/secrets'),
     app, router;
@@ -26,7 +26,7 @@ app.use(session({ secret: 'my secret', resave: false, saveUninitialized: true}))
 app.controllers = {
     comments : commentController,
     users : userController,
-    publications : publicationController,
+    films : filmController,
     account : accountController
 };
 
@@ -96,7 +96,7 @@ app.post('/api/:controller', ApiRequest);
 app.put('/api/:controller', ApiRequest);
 app.delete('/api/:controller', ApiRequest);
 
-app.listen(8080);
-console.log('App listening at :8080');
+app.listen(5000);
+console.log('App listening at : 5000');
 
 module.exports = app;

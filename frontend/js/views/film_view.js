@@ -6,18 +6,12 @@ define([
 
     var filmView = new View({
         container : "#body",
-        templateUrl : "js/templates/editor.hbs",
+        templateUrl : "js/templates/film.hbs",
         model : filmModel,
         parseArgs : function(args){
-            if(args[0] !== undefined){
-                return {
-                    id : args[0]
-                };
-            }
-            else
-            {
-                return null;
-            }
+            return {
+                id : args[0]
+            };
         }
     });
 

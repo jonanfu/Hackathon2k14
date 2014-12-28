@@ -1,20 +1,20 @@
 define([
-        'js/views/publications_view',
-        'js/views/publication_view',
+        'js/views/films_view',
+        'js/views/film_view',
         'js/views/comments_view',
         'js/views/editor_view'
     ],
-    function (publicationsView, publicationView, commentsView, editorView) {
+    function (filmsView, filmView, commentsView, editorView) {
         'use strict';
 
         function HomeController(){};
 
         HomeController.prototype.index = function(args) {
-            publicationsView.render(args, function(){});
+            filmView.render(args, function(){});
         };
 
-        HomeController.prototype.publication = function(args) {
-            publicationView.render(args, function(){
+        HomeController.prototype.film = function(args) {
+            filmsView.render(args, function(){
                 // set publication events
 
                 // render comments
@@ -22,7 +22,7 @@ define([
                     // set comments events
                     $('#guardar-comentario').on('click', function(e){
                         var nuevoComentario = {
-                            publicationId : $('#comments').data('publication-id'),
+                            filmId : $('#comments').data('film-id'),
                             content : $('#comentario').val()
                         };
                         commentsView.model.post(nuevoComentario, function (data) {
@@ -35,7 +35,7 @@ define([
             });
         };
 
-        HomeController.prototype.publicationeditor = function(args) {
+        HomeController.prototype.filmeditor = function(args) {
             editorView.render(args, function () {
                 // set events
                 $('#editor-submit-btn').on('click', function(e) {
@@ -64,15 +64,15 @@ define([
         };
 
         HomeController.prototype.deleteeditor = function(args) {
-            publicationsView.model.delete({ id : args[0]}, function () {
-                publicationsView.render({}, function(){});
+            filmsView.model.delete({ id : args[0]}, function () {
+                filmsView.render({}, function(){});
             });
         };
 
         HomeController.prototype.deletecomment = function(args) {
             debugger;
-            commentsView.model.delete({ publicationId : args[0], id : args[1]}, function () {
-                window.location.hash = "home/publication/" + args[0];
+            commentsView.model.delete({ filmId : args[0], id : args[1]}, function () {
+                window.location.hash = "home/film/" + args[0];
             });
         };
 

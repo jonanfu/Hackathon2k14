@@ -40,7 +40,7 @@ CommentController.prototype.post = function (req, res)
     var comment;
 
     comment = new commentModel({
-        publicationId: req.body.publicationId,
+        filmId : req.body.publicationId,
         userId : req.session.userId,
         content : req.body.content,
         ticks : new Date().getTime()

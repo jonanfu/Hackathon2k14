@@ -1,11 +1,11 @@
 "use strict";
 
-var publicationModel = require('../models/publication_model'),
+var filmModel = require('../models/film_model'),
     url = require('url');
 
-function PublicationController(){};
+function FilmController(){};
 
-PublicationController.prototype.get = function (req, res)
+FilmController.prototype.get = function (req, res)
 {
     var query, filter;
 
@@ -16,16 +16,16 @@ PublicationController.prototype.get = function (req, res)
         filter._id = query.id
     }
 
-    publicationModel.find(filter, null, null, function(error, docs) {
+    filmModel.find(filter, null, null, function(error, docs) {
         if(error === null)
         {
             if(req.session.userId !== null)
             {
-                res.status(200).send({ isAdmin : req.session.isAdmin, publication : docs });
+                res.status(200).send({ isAdmin : req.session.isAdmin, film : docs });
             }
             else
             {
-                res.status(200).send({ isAdmin : false, publication : docs });
+                res.status(200).send({ isAdmin : false, film : docs });
             }
         }
         else
@@ -36,21 +36,22 @@ PublicationController.prototype.get = function (req, res)
     });
 };
 
-PublicationController.prototype.post = function (req, res)
+FilmController.prototype.post = function (req, res)
 {
-    var publication;
+    var film;
 
-    publication = new publicationModel({
+    film = new filmModel({
         userId : req.session.userId,
         title : req.body.title,
         content : req.body.content,
-        ticks : new Date().getTime()
+        date : new Date().getTime(),
+        manager : req.body.manager
     });
 
-    publication.save(function(error) {
+    film.save(function(error) {
         if(error === null)
         {
-            res.send(200, { publication : [] });
+            res.send(200, { film : [] });
         }
         else
         {
@@ -60,19 +61,19 @@ PublicationController.prototype.post = function (req, res)
     });
 };
 
-PublicationController.prototype.put = function (req, res)
+FilmController.prototype.put = function (req, res)
 {
-    var publicationData;
+    var filmData;
 
-    publicationData = {
+    filmData = {
         title : req.body.title,
         content : req.body.content
     };
 
-    publicationModel.findByIdAndUpdate(req.body.id, publicationData, function(error) {
+    filmModel.findByIdAndUpdate(req.body.id, filmData, function(error) {
         if(error === null)
         {
-            res.send(200, { publication : [] });
+            res.send(200, { film : [] });
         }
         else
         {
@@ -82,13 +83,13 @@ PublicationController.prototype.put = function (req, res)
     });
 };
 
-PublicationController.prototype.delete = function (req, res)
+FilmController.prototype.delete = function (req, res)
 {
     var filter = { _id : req.body.id };
-    publicationModel.findOneAndRemove(filter, function(error) {
+    filmModel.findOneAndRemove(filter, function(error) {
         if(error === null)
         {
-            res.status(200).send({ publication : [] });
+            res.status(200).send({ film : [] });
         }
         else
         {
@@ -98,4 +99,4 @@ PublicationController.prototype.delete = function (req, res)
     });
 };
 
-module.exports = new PublicationController();
+module.exports = new FilmController();

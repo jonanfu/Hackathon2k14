@@ -1,14 +1,14 @@
 {{#if isAdmin}}
-    <a href="#home/publicationeditor" class="btn btn-primary pull-right">
-        <i class="fa fa-plus"></i> Crear Noticia
+    <a href="#home/filmeditor" class="btn btn-primary pull-right">
+        <i class="fa fa-plus"></i> Crear Pelicula
     </a>
 {{/if}}
-<h1>Noticias</h1>
-{{#each publication}}
+<h1>Peliculas</h1>
+{{#each film}}
     <div class="media">
         {{#if ../isAdmin}}
             <div class="btn-toolbar">
-            <a href="#home/publicationeditor/{{_id}}" class="pull-right">
+            <a href="#home/filmeditor/{{_id}}" class="pull-right">
                 <i class="fa fa-pencil"></i>
             </a>
             <a href="#home/deleteeditor/{{_id}}" class="pull-right">
@@ -16,7 +16,7 @@
             </a>
             </div>
         {{/if}}
-        <a class="media-left" href="#home/publication/{{_id}}">
+        <a class="media-left" href="#home/film/{{_id}}">
             <i class="fa fa-book publication-icon"></i>
         </a>
         <div class="media-body">
