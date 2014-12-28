@@ -10,11 +10,11 @@ define([
         function HomeController(){};
 
         HomeController.prototype.index = function(args) {
-            filmView.render(args, function(){});
+            filmsView.render(args, function(){});
         };
 
         HomeController.prototype.film = function(args) {
-            filmsView.render(args, function(){
+            filmView.render(args, function(){
                 // set publication events
 
                 // render comments
