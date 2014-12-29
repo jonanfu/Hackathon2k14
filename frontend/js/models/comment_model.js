@@ -9,7 +9,7 @@ define([
         formatter : function(data){
             var i = 0;
             for(i; i < data.comment.length; i++){
-                data.comment[i].ticks = helper.ticksToDateString(data.comment[i].ticks);
+                data.comment[i].date = helper.ticksToDateString(data.comment[i].date);
             }
             return data;
         }

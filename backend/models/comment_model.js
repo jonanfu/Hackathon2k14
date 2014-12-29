@@ -12,7 +12,7 @@ if (mongoose.modelNames().indexOf(collectionName) == -1)
             filmId: { type: mongoose.Schema.ObjectId, required: true },
             userId : { type: mongoose.Schema.ObjectId, required: true },
             content : { type : String, required : true },
-            ticks : { type : Number, required : true }
+            date : { type : Number, required : true }
         },
         {
             collection : collectionName

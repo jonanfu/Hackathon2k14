@@ -43,7 +43,7 @@ CommentController.prototype.post = function (req, res)
         filmId : req.body.publicationId,
         userId : req.session.userId,
         content : req.body.content,
-        ticks : new Date().getTime()
+        date : new Date().getTime()
     });
 
     comment.save(function(error) {

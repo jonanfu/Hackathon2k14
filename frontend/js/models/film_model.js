@@ -10,7 +10,7 @@ define([
         {
             if(data.film[0] !== undefined) {
                 var film = data.film[0];
-                film.ticks = helper.ticksToDateString(film.ticks);
+                film.date = helper.ticksToDateString(film.date);
                 return film;
             }
             else

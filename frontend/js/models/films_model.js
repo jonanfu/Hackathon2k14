@@ -9,7 +9,7 @@ define([
         formatter : function(data){
             var i = 0;
             for(i; i < data.film.length; i++){
-                data.film[i].ticks = helper.ticksToDateString(data.film[i].ticks);
+                data.film[i].date = helper.ticksToDateString(data.film[i].date);
             }
             return data;
         }
