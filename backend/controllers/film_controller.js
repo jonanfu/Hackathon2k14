@@ -67,7 +67,8 @@ FilmController.prototype.put = function (req, res)
 
     filmData = {
         title : req.body.title,
-        content : req.body.content
+        content : req.body.content,
+        manager : req.body.manager
     };
 
     filmModel.findByIdAndUpdate(req.body.id, filmData, function(error) {

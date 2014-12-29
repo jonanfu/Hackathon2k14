@@ -10,7 +10,7 @@ define([
         model : commentModel,
         parseArgs : function(args){
             return {
-                publicationId : args[0]
+                filmId : args[0]
             };
         }
     });
