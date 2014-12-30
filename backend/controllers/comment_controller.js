@@ -12,8 +12,8 @@ CommentController.prototype.get = function (req, res)
     query = url.parse(req.url, true).query;
     filter = {};
 
-    if(query.publicationId !== undefined) {
-        filter.publicationId = query.publicationId
+    if(query.filmId !== undefined) {
+        filter.filmId = query.filmId
     }
 
     commentModel.find(filter, null, null, function(error, docs) {
@@ -40,7 +40,7 @@ CommentController.prototype.post = function (req, res)
     var comment;
 
     comment = new commentModel({
-        filmId : req.body.publicationId,
+        filmId : req.body.filmId,
         userId : req.session.userId,
         content : req.body.content,
         date : new Date().getTime()
