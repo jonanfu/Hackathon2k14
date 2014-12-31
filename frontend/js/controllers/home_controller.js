@@ -44,7 +44,8 @@ define([
                             id: args[0],
                             title: $('#titulo').val(),
                             content: $('#contenido').val(),
-                            manager: $('#director').val()
+                            manager: $('#director').val(),
+                            poster:  $('#poster').val()
                         };
                         editorView.model.put(data, function (response) {
                             window.location.hash = "home/index";
@@ -55,7 +56,8 @@ define([
                         var data = {
                             title: $('#titulo').val(),
                             content: $('#contenido').val(),
-                            manager: $('#director').val()
+                            manager: $('#director').val(),
+                            poster:  $('#poster').val()
                         };
                         editorView.model.post(data, function (response) {
                             window.location.hash = "home/index";

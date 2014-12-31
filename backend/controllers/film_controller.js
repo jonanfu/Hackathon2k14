@@ -45,7 +45,8 @@ FilmController.prototype.post = function (req, res)
         title : req.body.title,
         content : req.body.content,
         date : new Date().getTime(),
-        manager : req.body.manager
+        manager : req.body.manager,
+        poster : req.body.poster
     });
 
     film.save(function(error) {
@@ -68,7 +69,8 @@ FilmController.prototype.put = function (req, res)
     filmData = {
         title : req.body.title,
         content : req.body.content,
-        manager : req.body.manager
+        manager : req.body.manager,
+        poster : req.body.poster
     };
 
     filmModel.findByIdAndUpdate(req.body.id, filmData, function(error) {

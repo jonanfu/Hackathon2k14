@@ -33,3 +33,12 @@ body{
     margin-right: 5px;
     margin-bottom: 5px;
 }
+
+.title-center {
+    text-align: center;
+}
+
+.details-film {
+    color: #777;
+    font-size: small;
+}

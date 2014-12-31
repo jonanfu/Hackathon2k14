@@ -1,4 +1,5 @@
-define([ 'js/framework/framework.view' ], function (View) {
+define([ 'js/framework/framework.view' ], 
+function (View) {
     'use strict';
 
     var headerView = new View({

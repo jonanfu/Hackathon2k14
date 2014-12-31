@@ -13,7 +13,8 @@ if (mongoose.modelNames().indexOf(collectionName) == -1)
             title : { type: String, required: true },
             content : { type: String, required: true },
             date : { type : Number, required : true },
-            manager : { type : String, required : true }
+            manager : { type : String, required : true },
+            poster : { type : String, required : true }
         },
         {
             collection : collectionName
