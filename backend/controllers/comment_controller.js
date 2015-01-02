@@ -39,12 +39,25 @@ CommentController.prototype.post = function (req, res)
 {
     var comment;
 
-    comment = new commentModel({
-        filmId : req.body.filmId,
-        userId : req.session.userId,
-        content : req.body.content,
-        date : new Date().getTime()
-    });
+    if (req.session.userId === undefined || req.session.userId === null){
+        console.log('Anonymus user');
+        comment = new commentModel({
+            filmId : req.body.filmId,       
+            userId : "54a4297bbf312417b5ffac00",
+            content : "(Anónimo)"+"\n\ "+req.body.content,        
+            date : new Date().getTime()
+        });
+    }
+    else{
+        comment = new commentModel({
+            filmId : req.body.filmId,       
+            userId : req.session.userId,        
+            content : req.body.content,        
+            date : new Date().getTime()
+        });
+    };
+
+    
 
     comment.save(function(error) {
         if(error === null)
