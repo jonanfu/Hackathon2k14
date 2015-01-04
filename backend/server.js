@@ -38,7 +38,7 @@ function ApiRequest(req, res, next)
 
     if (controller === undefined)
     {
-        res.send(404, 'Controller Not found!');
+        res.status(404).send('Controller Not found!');
     }
     else
     {
@@ -46,13 +46,13 @@ function ApiRequest(req, res, next)
 
         if (action === undefined)
         {
-            res.send(404, 'Action Not found!');
+            res.status(404).send('Action Not found!');
         }
         else
         {
             if (typeof action !== "function")
             {
-                res.send(500, 'Could not find action in controller');
+                res.status(500).send('Could not find action in controller');
             }
             else
             {
@@ -63,7 +63,7 @@ function ApiRequest(req, res, next)
                 catch (error)
                 {
                     console.log(error);
-                    res.send(500, 'Internal Server Error');
+                    res.status(500).send('Internal Server Error');
                 }
             }
         }

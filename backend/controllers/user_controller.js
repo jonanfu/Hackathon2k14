@@ -19,7 +19,7 @@ UserController.prototype.get = function (req, res)
     userModel.find(filter, null, null, function(error, docs) {
         if(error === null)
         {
-            res.send(200, { user : docs });
+            res.status(200).send({ user : docs });
         }
         else
         {
@@ -42,7 +42,7 @@ UserController.prototype.post = function (req, res)
     user.save(function(error) {
         if(error === null)
         {
-            res.send(200, { user : [] });
+            res.status(200).send({ user : docs });
         }
         else
         {

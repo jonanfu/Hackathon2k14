@@ -52,7 +52,7 @@ FilmController.prototype.post = function (req, res)
     film.save(function(error) {
         if(error === null)
         {
-            res.send(200, { film : [] });
+            res.status(200).send({ film : [] });
         }
         else
         {
@@ -76,7 +76,7 @@ FilmController.prototype.put = function (req, res)
     filmModel.findByIdAndUpdate(req.body.id, filmData, function(error) {
         if(error === null)
         {
-            res.send(200, { film : [] });
+            res.status(200).send({ film : [] });
         }
         else
         {
