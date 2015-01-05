@@ -42,3 +42,16 @@ body{
     color: #777;
     font-size: small;
 }
+
+.img-center {
+    margin: 0 auto;
+}
+
+.espacio-bajo-5 {
+    margin-bottom: 5%;
+}
+
+.woma2 {
+    font-size: smaller;
+}
+

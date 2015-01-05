@@ -16,14 +16,48 @@
             </a>
             </div>
         {{/if}}
-        <a class="media-left" href="#home/film/{{_id}}">
-            <i class="fa fa-book publication-icon"></i>
-        </a>
         <div class="media-body">
-            <h4 class="media-heading">{{title}}</h4>
-            <p>{{date}}</p>
-            <p>{{manager}}</p>
-            <img src="{{poster}}" alt="" class="img-responsive">
+            <a href="#home/film/{{_id}}">
+                <h2 class="media-heading title-center espacio-bajo-5">{{title}}</h4>
+            </a>
+            <div>
+                <a href="#home/film/{{_id}}">
+                    <img src="{{poster}}" alt="" class="img-responsive center-block">
+                </a>
+            </div>
+
+            <script type="text/javascript">
+                $(function() {
+                var texto = $.parseHTML({{content}});
+                var numMaxCaract = 20;
+
+                if (texto.length <  numMaxCaract){
+                    var textoCortado = texto;
+                }else{
+                    textoCortado = texto.substr(0, numMaxCaract);
+                    var numUltimoEspacio = textoCortado.lastIndexOf(" ");
+                    var ultimoEspacio = textoCortado.substr(0, numUltimoEspacio);
+             
+                    if (ultimoEspacio !== false){
+                        var textoCortadoTmp = textoCortado.substr(0, numUltimoEspacio);
+                        if (textoCortado.substr(ultimoEspacio)){
+                            textoCortadoTmp += '...';
+                        }
+                        textoCortado = textoCortadoTmp;
+                    }else if (texto.substr(numMaxCaract)){
+                        textoCortado += '...';
+                    }
+                }
+                var x = document.getElementsByClassName("woma2");
+                var i;
+                for (i = 0; i < x.length; i++) {
+                    x[i].innerHTML = textoCortado;
+                }
+                });
+            </script>
+            <p class="woma2"></p>
+            <br /><br /><br />
+            <p class="details-film">Fecha publicación: {{date}} &nbsp;&nbsp; - &nbsp;&nbsp; Dirigido por: {{manager}}</p>
         </div>
     </div>
     <hr />
