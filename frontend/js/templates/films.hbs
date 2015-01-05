@@ -22,10 +22,9 @@
             </a>
             <div>
                 <a href="#home/film/{{_id}}">
-                    <img src="{{poster}}" alt="" class="img-responsive center-block">
+                    <img src="{{poster}}" alt="" class="img-responsive">
                 </a>
             </div>
-
             <script type="text/javascript">
                 $(function() {
                 var texto = $.parseHTML({{content}});
@@ -55,7 +54,7 @@
                 }
                 });
             </script>
-            <p class="woma2"></p>
+            <p class="woma2 text-justify"></p>
             <br /><br /><br />
             <p class="details-film">Fecha publicación: {{date}} &nbsp;&nbsp; - &nbsp;&nbsp; Dirigido por: {{manager}}</p>
         </div>
