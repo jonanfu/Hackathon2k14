@@ -11,7 +11,14 @@ define([], function () {
 
     Helper.prototype.shortContent = function(content)
     {
-    	return content.substr(0, 50);
+        if (content.length > 1000){
+            var c = content.substr(0, 1000);
+            // Cortamos hasta la última palabra, sin cortar palabras por la mitad
+            c = c.substr(0, c.lastIndexOf(" "));
+            return c + "...";
+        }else{
+            return content;
+        }
     };
 
     return new Helper();

@@ -1,4 +1,3 @@
-
 {{#if isAdmin}}
     <a href="#home/filmeditor" class="btn btn-primary pull-right">
         <i class="fa fa-plus"></i> Crear Entrada
@@ -23,41 +22,11 @@
             </a>
             <div>
                 <a href="#home/film/{{_id}}">
-                    <img src="{{poster}}" alt="" class="img-responsive">
+                    <img src="{{poster}}" alt="" class="img-responsive img-center espacio-bajo-5">
                 </a>
             </div>
-            <!--
-            <script type="text/javascript">
-                $(function() {
-                var texto = {{{content}}};
-                var numMaxCaract = 20;
-
-                if (texto.length <  numMaxCaract){
-                    var textoCortado = texto;
-                }else{
-                    textoCortado = texto.substr(0, numMaxCaract);
-                    var numUltimoEspacio = textoCortado.lastIndexOf(" ");
-                    var ultimoEspacio = textoCortado.substr(0, numUltimoEspacio);
-             
-                    if (ultimoEspacio !== false){
-                        var textoCortadoTmp = textoCortado.substr(0, numUltimoEspacio);
-                        if (textoCortado.substr(ultimoEspacio)){
-                            textoCortadoTmp += '...';
-                        }
-                        textoCortado = textoCortadoTmp;
-                    }else if (texto.substr(numMaxCaract)){
-                        textoCortado += '...';
-                    }
-                }
-                var x = document.getElementsByClassName("woma2");
-                var i;
-                for (i = 0; i < x.length; i++) {
-                    x[i].innerHTML = textoCortado;
-                }
-                });
-            </script>
-            -->
             <p class="text-justify">{{shortContent}}</p>
+            <a href="#home/film/{{_id}}" class="pull-right">Ver Más</a>
             <br /><br /><br />
             <p class="details-film">Fecha publicación: {{date}} &nbsp;&nbsp; - &nbsp;&nbsp; Dirigido por: {{manager}}</p>
         </div>
