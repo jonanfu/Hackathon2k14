@@ -11,8 +11,8 @@ define([], function () {
 
     Helper.prototype.shortContent = function(content)
     {
-        if (content.length > 1000){
-            var c = content.substr(0, 1000);
+        if (content.length > 500){
+            var c = content.substr(0, 500);
             // Cortamos hasta la última palabra, sin cortar palabras por la mitad
             c = c.substr(0, c.lastIndexOf(" "));
             return c + "...";
