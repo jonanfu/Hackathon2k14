@@ -12,6 +12,7 @@ if (mongoose.modelNames().indexOf(collectionName) == -1)
             userId : { type: mongoose.Schema.ObjectId, required: true },
             title : { type: String, required: true },
             content : { type: String, required: true },
+            shortContent : { type: String, required: false },
             date : { type : Number, required : true },
             manager : { type : String, required : true },
             poster : { type : String, required : true }

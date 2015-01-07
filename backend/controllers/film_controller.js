@@ -44,6 +44,7 @@ FilmController.prototype.post = function (req, res)
         userId : req.session.userId,
         title : req.body.title,
         content : req.body.content,
+        shortContent : req.body.shortContent,
         date : new Date().getTime(),
         manager : req.body.manager,
         poster : req.body.poster
@@ -69,6 +70,7 @@ FilmController.prototype.put = function (req, res)
     filmData = {
         title : req.body.title,
         content : req.body.content,
+        shortContent : req.body.shortContent,
         manager : req.body.manager,
         poster : req.body.poster
     };

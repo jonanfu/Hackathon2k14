@@ -1,3 +1,4 @@
+
 {{#if isAdmin}}
     <a href="#home/filmeditor" class="btn btn-primary pull-right">
         <i class="fa fa-plus"></i> Crear Entrada
@@ -25,9 +26,10 @@
                     <img src="{{poster}}" alt="" class="img-responsive">
                 </a>
             </div>
+            <!--
             <script type="text/javascript">
                 $(function() {
-                var texto = $.parseHTML({{content}});
+                var texto = {{{content}}};
                 var numMaxCaract = 20;
 
                 if (texto.length <  numMaxCaract){
@@ -54,7 +56,8 @@
                 }
                 });
             </script>
-            <p class="woma2 text-justify"></p>
+            -->
+            <p class="text-justify">{{shortContent}}</p>
             <br /><br /><br />
             <p class="details-film">Fecha publicación: {{date}} &nbsp;&nbsp; - &nbsp;&nbsp; Dirigido por: {{manager}}</p>
         </div>

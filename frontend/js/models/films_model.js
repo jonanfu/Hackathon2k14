@@ -10,6 +10,7 @@ define([
             var i = 0;
             for(i; i < data.film.length; i++){
                 data.film[i].date = helper.ticksToDateString(data.film[i].date);
+                data.film[i].shortContent = helper.shortContent(data.film[i].content);
             }
             return data;
         }
