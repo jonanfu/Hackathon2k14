@@ -1,8 +1,9 @@
 define([
         'js/views/login_view',
-        'js/models/account_model'
+        'js/models/account_model',
+        'js/views/register_view'
     ],
-    function (loginView, accountModel) {
+    function (loginView, accountModel, registerView) {
         'use strict';
 
         function AccountController(){};
@@ -55,6 +56,31 @@ define([
                 $('#logout-btn').addClass('hide');
                 $('#login-btn').fadeIn().removeClass('hide');
                 window.location.hash = "home/index";
+            });
+        };
+
+        AccountController.prototype.register = function(args) {
+            registerView.render(args, function(){
+                $('#email').focus();
+                $(document).keypress(function(event) {
+                    var keycode = (event.keyCode ? event.keyCode : event.which);
+                    if(keycode == '13') {
+                        var model = {
+                            email : $('#email').val(),
+                            password : $('#password').val()
+                        };
+                        registerView.model.post(model, function(data) {
+                            if (data.isValid === true) {
+                                window.location.hash = "home/index";
+                            }
+                            else
+                            {
+                                $('#login_error').fadeIn().removeClass('hide');
+                            }
+                        });
+                    }
+                });
+                
             });
         };
 
