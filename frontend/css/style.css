@@ -39,6 +39,10 @@ body{
     text-align: center;
 }
 
+.primary-color-font {
+    color: #4582EC;
+}
+
 .details-film {
     color: #777;
     font-size: small;
@@ -48,6 +52,7 @@ body{
     margin: 0 auto;
     border-radius: 5px;
 }
+
 
 .espacio-bajo-5 {
     margin-bottom: 5%;
