@@ -66,22 +66,26 @@ define([
                     var keycode = (event.keyCode ? event.keyCode : event.which);
                     if(keycode == '13') {
                         var model = {
-                            email : $('#email').val(),
-                            password : $('#password').val()
+                            email : $('#emailCreate').val(),
+                            password : $('#passwordCreate').val()
                         };
-                        registerView.model.post(model, function(data) {
-                            if (data.isValid === true) {
-                                window.location.hash = "home/index";
-                            }
-                            else
-                            {
-                                $('#login_error').fadeIn().removeClass('hide');
-                            }
+                        registerView.model.post(model, function() {
+                            window.location.hash = "home/index";
                         });
                     }
                 });
-                
-            });
+                $('#create-count').on('click', function(){
+                    var model = {
+                        email : $('#emailCreate').val(),
+                        password : $('#passwordCreate').val()
+                    };
+                    registerView.model.post(model, function() {
+                            
+                        window.location.hash = "home/index";
+                            
+                        });
+                    });
+                });
         };
 
         return new AccountController();

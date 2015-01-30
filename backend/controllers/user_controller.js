@@ -42,7 +42,7 @@ UserController.prototype.post = function (req, res)
     user.save(function(error) {
         if(error === null)
         {
-            res.status(200).send({ user : docs });
+            res.status(200).send({ user : [] });
         }
         else
         {
