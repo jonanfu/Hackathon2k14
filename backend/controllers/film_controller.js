@@ -70,7 +70,6 @@ FilmController.prototype.put = function (req, res)
     filmData = {
         title : req.body.title,
         content : req.body.content,
-        shortContent : req.body.shortContent,
         manager : req.body.manager,
         poster : req.body.poster
     };
